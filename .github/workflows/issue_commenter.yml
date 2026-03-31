@@ -2,8 +2,7 @@ name: Auto Comment on Issue
 
 on:
   issues:
-    types:
-      - opened
+    types: [opened]
 
 jobs:
   comment:
@@ -15,7 +14,6 @@ jobs:
       - name: Comment on new issue
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.MY_PERSONAL_TOKEN }}
           script: >
             github.rest.issues.createComment({
               issue_number: context.payload.issue.number,
